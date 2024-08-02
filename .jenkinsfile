@@ -1,0 +1,20 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Pre-Build') {
+            steps {
+                sh 'echo "Pre-build stage started"'
+                sh 'sudo apt-get update -y'
+                sh 'sudo apt-get install -y build-essential'
+            }
+        }
+        stage('Build') {
+            steps {
+                sh 'echo "Build stage started"'
+                sh 'gcc -o program firstletter.c'
+                sh './program'
+            }
+        }
+    }
+}
