@@ -1,0 +1,18 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Pre-build') {
+            steps {
+                sh 'gcc --version'
+                sh 'echo "Pre-build stage complete"'
+            }
+        }
+        stage('Build') {
+            steps {
+                sh 'gcc -o program program.c'
+                sh 'echo "Build stage complete"'
+            }
+        }
+    }
+}
